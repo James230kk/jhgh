@@ -2,7 +2,8 @@ import '../components/I18nManager';
 import { Stack } from 'expo-router';
 import { AuthProvider, useAuth } from '../hooks/useAuth';
 import { View, ActivityIndicator } from 'react-native';
-import { Redirect } from 'expo-router';
+import { Redirect } from 'expo-router'
+import { useFrameworkReady } from '@/hooks/useFrameworkReady';
 
 function RootLayoutNav() {
   const { user, loading } = useAuth();
@@ -48,6 +49,7 @@ function RootLayoutNav() {
 }
 
 export default function RootLayout() {
+  useFrameworkReady();
   return (
     <AuthProvider>
       <RootLayoutNav />
